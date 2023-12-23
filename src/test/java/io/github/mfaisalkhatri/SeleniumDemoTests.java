@@ -15,7 +15,7 @@ public class SeleniumDemoTests {
         final WebDriver driver = new ChromeDriver();
         driver.navigate().to("https://www.selenium.dev/");
         assertEquals (driver.getTitle(), "Selenium");
-        driver.quit();
+      //  driver.quit();
     }
 
     @Test

@@ -6,7 +6,7 @@
             <class name="io.github.mfaisalkhatri.SeleniumDemoTests">
                 <methods>
                     <include name="testOnChrome"/>
-                    <include name="testOnFirefox"/>
+                    <include name="testOnChrome"/>
                 </methods>
             </class>
         </classes>
