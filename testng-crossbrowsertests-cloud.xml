@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Selenium WebDriver Cross browser tests suite">
+<suite name="Selenium WebDriver Cross browser tests suite" parallel="tests">
 
     <test name="Selenium Cross Browser Tests on Chrome" >
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="remote_chrome"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTests">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsOnCloud">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>
@@ -13,9 +13,9 @@
         </classes>
     </test>
     <test name="Selenium Cross Browser Tests on Firefox"  >
-        <parameter name="browser" value="firefox"/>
+        <parameter name="browser" value="remote_firefox"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTests">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsOnCloud">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>
@@ -23,9 +23,9 @@
         </classes>
     </test>
     <test name="Selenium Cross Browser Tests on Edge" >
-        <parameter name="browser" value="edge"/>
+        <parameter name="browser" value="remote_edge"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTests">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsOnCloud">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>
@@ -33,9 +33,9 @@
         </classes>
     </test>
     <test name="Selenium Cross Browser Tests on Safari">
-        <parameter name="browser" value="safari"/>
+        <parameter name="browser" value="remote_safari"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTests">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsOnCloud">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>

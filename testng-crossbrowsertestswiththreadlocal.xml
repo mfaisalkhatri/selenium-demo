@@ -5,7 +5,7 @@
     <test name="Selenium Cross Browser Tests on Chrome" >
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.CrossBrowserTestsWithThreadLocal">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsWithThreadLocal">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>
@@ -15,7 +15,7 @@
     <test name="Selenium Cross Browser Tests on Firefox"  >
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.CrossBrowserTestsWithThreadLocal">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsWithThreadLocal">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>
@@ -25,7 +25,7 @@
     <test name="Selenium Cross Browser Tests on Edge" >
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.CrossBrowserTestsWithThreadLocal">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsWithThreadLocal">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>
@@ -35,7 +35,7 @@
     <test name="Selenium Cross Browser Tests on Safari">
         <parameter name="browser" value="safari"/>
         <classes>
-            <class name="io.github.mfaisalkhatri.CrossBrowserTestsWithThreadLocal">
+            <class name="io.github.mfaisalkhatri.crossbrowsertests.CrossBrowserTestsWithThreadLocal">
                 <methods>
                     <include name="testLoginPage"/>
                 </methods>

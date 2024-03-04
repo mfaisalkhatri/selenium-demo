@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri;
+package io.github.mfaisalkhatri.crossbrowsertests;
 
 import io.github.mfaisalkhatri.pages.LoginPage;
 import io.github.mfaisalkhatri.pages.SecureAreaPage;
@@ -12,25 +12,23 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class CrossBrowserTests {
-
-    private WebDriver driver;
+public class CrossBrowserTestsWithThreadLocal {
+    private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
     @BeforeTest
     @Parameters("browser")
     public void setup(final String browser) {
         if (browser.equalsIgnoreCase("CHROME")) {
-            this.driver = new ChromeDriver();
+            DRIVER.set(new ChromeDriver());
         } else if (browser.equalsIgnoreCase("EDGE")) {
-            this.driver = new EdgeDriver();
+            DRIVER.set(new EdgeDriver());
         } else if (browser.equalsIgnoreCase("FIREFOX")) {
-            this.driver = new FirefoxDriver();
+            DRIVER.set(new FirefoxDriver());
         } else if (browser.equalsIgnoreCase("SAFARI")) {
-            this.driver = new SafariDriver();
+            DRIVER.set(new SafariDriver());
         } else {
             throw new Error("Browser name is not specified correctly. It should be either chrome, firefox, edge or safari!!");
         }
@@ -38,18 +36,16 @@ public class CrossBrowserTests {
 
     @Test
     public void testLoginPage() {
-        this.driver.get("https://the-internet.herokuapp.com/login");
-        final var loginPage = new LoginPage(this.driver);
+        DRIVER.get().navigate().to("https://the-internet.herokuapp.com/login");
+        final var loginPage = new LoginPage(DRIVER.get());
         assertEquals(loginPage.pageHeader(), "Login Page");
 
         final SecureAreaPage secureAreaPage = loginPage.performLogin("tomsmith", "SuperSecretPassword!");
         assertTrue(secureAreaPage.isLogoutBtnDisplayed());
-
     }
 
     @AfterTest
     public void tearDown() {
-        this.driver.quit();
+        DRIVER.get().quit();
     }
-
 }
