@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Selenium WebDriver Cross browser tests suite" parallel="tests">
+<suite name="Selenium WebDriver Cross browser tests suite">
 
     <test name="Selenium Cross Browser Tests on Chrome" >
         <parameter name="browser" value="chrome"/>
@@ -32,7 +32,7 @@
             </class>
         </classes>
     </test>
-    <test name="Selenium Cross Browser Tests on Safari" enabled="false">
+    <test name="Selenium Cross Browser Tests on Safari">
         <parameter name="browser" value="safari"/>
         <classes>
             <class name="io.github.mfaisalkhatri.CrossBrowserTests">
