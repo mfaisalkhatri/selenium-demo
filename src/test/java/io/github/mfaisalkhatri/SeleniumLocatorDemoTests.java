@@ -82,6 +82,38 @@ public class SeleniumLocatorDemoTests {
 
     }
 
+    @Test
+    public void testClassName () throws InterruptedException{
+        driver.get("https://the-internet.herokuapp.com/forgot_password");
+        WebElement retrievePasswordBtn = driver.findElement(By.className("radius"));
+        retrievePasswordBtn.click();
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testSimplkeXpathLocators() {
+        driver.get("https://www.lambdatest.com/selenium-playground/ajax-form-submit-demo");
+        WebElement nameField = driver.findElement(By.xpath("input[@id='title']"));
+        nameField.sendKeys("Faisal");
+        WebElement messageField = driver.findElement(By.xpath("//textarea[contains(@name, 'description')]"));
+        messageField.sendKeys("This is test message");
+    }
+
+    @Test
+    public void testXpathAndOr() throws InterruptedException{
+        driver.get("https://the-internet.herokuapp.com/login");
+        WebElement usernameField = driver.findElement(By.xpath("//input[@id=\"username\" or @name=\"username\"]"));
+        usernameField.sendKeys("faisal@demo.co.in");
+
+        WebElement passwordField = driver.findElement(By.xpath("//input[@id='password' and @name ='password']"));
+        passwordField.sendKeys("Password123");
+
+        Thread.sleep(2000);
+
+    }
+
+    
+
 
 
     @Test
