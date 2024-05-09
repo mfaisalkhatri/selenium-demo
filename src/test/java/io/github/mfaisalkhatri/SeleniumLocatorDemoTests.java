@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 import static org.testng.Assert.assertEquals;
@@ -17,38 +18,71 @@ import static org.testng.Assert.assertEquals;
 public class SeleniumLocatorDemoTests {
 
     private WebDriver driver;
-@BeforeTest
-public void setup () {
-    driver = new ChromeDriver();
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-}
 
-@AfterTest
-public void tearDown() {
-    driver.quit();
-}
+    @BeforeTest
+    public void setup() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+    }
 
+    @AfterTest
+    public void tearDown() {
+        driver.quit();
+    }
 
 
     @Test
     public void testIdLocator() throws InterruptedException {
 
-    driver.get("https://juice-shop.herokuapp.com/#/register");
-    WebElement emailField = driver.findElement(By.id("emailControl"));
-    emailField.sendKeys("faisal@demo.com");
-    Thread.sleep(2000);
+        driver.get("https://the-internet.herokuapp.com/login");
+        WebElement emailField = driver.findElement(By.id("username"));
+        emailField.sendKeys("faisal@demo.com");
+        Thread.sleep(2000);
 
     }
 
     @Test
-    public void testNameLocator() {
-    driver.get("https://the-internet.herokuapp.com/login");
-    WebElement usernameField = driver.findElement(By.name("username"));
-    usernameField.sendKeys("faisal@demo.com");
+    public void testNameLocator() throws InterruptedException {
+        driver.get("https://the-internet.herokuapp.com/login");
+        WebElement usernameField = driver.findElement(By.name("username"));
+        usernameField.sendKeys("faisal@demo.com");
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testLinkTextLocator() throws InterruptedException  {
+        driver.get("https://the-internet.herokuapp.com/");
+        WebElement dragAndDropLink = driver.findElement(By.linkText("Drag and Drop"));
+        dragAndDropLink.click();
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testPartialLinkTextLocator() throws InterruptedException  {
+        driver.get("https://the-internet.herokuapp.com/");
+        WebElement dragAndDropLink = driver.findElement(By.partialLinkText("Context"));
+        dragAndDropLink.click();
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testTagNameLocator() throws InterruptedException{
+        driver.get("https://the-internet.herokuapp.com/");
+        WebElement dragAndDropLink = driver.findElement(By.partialLinkText("Drag and Drop"));
+        dragAndDropLink.click();
+        WebElement pageTitle = driver.findElement(By.tagName("h3"));
+        System.out.println(pageTitle.getText());
+
+        //Finding all links on the page
+        driver.get("https://the-internet.herokuapp.com/");
+        List<WebElement> pageLinks = driver.findElements(By.tagName("a"));
+        for(int i=0; i<pageLinks.size(); i++) {
+            System.out.println(pageLinks.get(i).getText());
+        }
 
     }
 
-    
+
 
     @Test
     public void testRelativeLocators() {
@@ -58,21 +92,21 @@ public void tearDown() {
         WebElement montanaJacket = driver.findElement(By.cssSelector(".products.wrapper ol li:nth-child(2) .product.details a.product-item-link"));
 
         WebElement belowMontanaJacket = driver.findElement(with(By.cssSelector(".products.wrapper ol li .product.details a.product-item-link")).below(montanaJacket));
-        assertEquals (belowMontanaJacket.getText(), "Taurus Elements Shell");
+        assertEquals(belowMontanaJacket.getText(), "Taurus Elements Shell");
 
         WebElement leftOfMontanaJacket = driver.findElement(with(By.cssSelector(".products.wrapper ol li .product.details a.product-item-link")).toLeftOf(montanaJacket));
-        assertEquals (leftOfMontanaJacket.getText(), "Proteus Fitness Jackshirt");
+        assertEquals(leftOfMontanaJacket.getText(), "Proteus Fitness Jackshirt");
 
         WebElement rightOfMontanaJacket = driver.findElement(with(By.cssSelector(".products.wrapper ol li .product.details a.product-item-link")).toRightOf(montanaJacket));
-        assertEquals (rightOfMontanaJacket.getText(), "Jupiter All-Weather Trainer");
+        assertEquals(rightOfMontanaJacket.getText(), "Jupiter All-Weather Trainer");
 
         WebElement kenobiJacket = driver.findElement(By.cssSelector(".products.wrapper ol li:nth-child(9) .product.details a.product-item-link"));
         WebElement aboveKenobiJacket = driver.findElement(with(By.cssSelector(".products.wrapper ol li .product.details a.product-item-link")).above(kenobiJacket));
-        assertEquals (aboveKenobiJacket.getText(), "Mars HeatTech™ Pullover");
+        assertEquals(aboveKenobiJacket.getText(), "Mars HeatTech™ Pullover");
 
 
         WebElement nearMontanaJacket = driver.findElement(with(By.className("price-wrapper")).near(montanaJacket));
-        assertEquals (nearMontanaJacket.getText(), "$49.00");
+        assertEquals(nearMontanaJacket.getText(), "$49.00");
     }
 
 
