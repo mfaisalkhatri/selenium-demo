@@ -109,13 +109,83 @@ public class SeleniumLocatorDemoTests {
         passwordField.sendKeys("Password123");
 
         Thread.sleep(2000);
-
     }
 
+    @Test
+    public void testXPathStartsWith() throws InterruptedException {
+        driver.get("https://the-internet.herokuapp.com/windows");
+        WebElement clickHereLink = driver.findElement(By.xpath("//a[starts-with(@href,'/windows/')]"));
+        clickHereLink.click();
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testXPathText() throws InterruptedException {
+        driver.get("https://the-internet.herokuapp.com/");
+        WebElement contextMenuLink = driver.findElement(By.xpath("//*[text()='Context Menu']"));
+        contextMenuLink.click();
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testCssSelectorsTagAndID() throws InterruptedException {
+        driver.get("https://the-internet.herokuapp.com/login");
+        WebElement usernameField = driver.findElement(By.cssSelector("input#username"));
+        usernameField.sendKeys("faisal@demo.com");
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testCssSelectorTagAndClass() throws InterruptedException{
+        driver.get("https://the-internet.herokuapp.com/login");
+        WebElement loginBtn = driver.findElement(By.cssSelector("button.radius"));
+        loginBtn.click();
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testCssSelectorTagAndAttribute() throws InterruptedException{
+        driver.get("https://juice-shop.herokuapp.com/#/");
+        WebElement meWantItBtn = driver.findElement(By.cssSelector("a[role='button'][aria-label='dismiss cookie message']"));
+        meWantItBtn.click();
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testCssSelectorTagClassAndAttribute() throws InterruptedException{
+        driver.get("https://juice-shop.herokuapp.com/#/");
+        WebElement dismissBtn = driver.findElement(By.cssSelector("button.close-dialog[aria-label=\"Close Welcome Banner\"]"));
+        dismissBtn.click();
+        Thread.sleep(2000);
+    }
+    @Test
+    public void testCssSelectorStartsAndEndsWithContains() throws InterruptedException {
+
+        driver.get("https://www.lambdatest.com/selenium-playground/input-form-demo");
+        WebElement nameField = driver.findElement(By.cssSelector("input[id^='na']"));
+        nameField.sendKeys("Faisal");
+
+        WebElement companyField = driver.findElement(By.cssSelector("input[name$='pany']"));
+        companyField.sendKeys("Freelance");
+
+        WebElement passwordField = driver.findElement(By.cssSelector("input[name*='pass']"));
+        passwordField.sendKeys("Pass@123");
+        Thread.sleep(2000);
+    }
+
+    @Test
+    public void testCssSelectorChildElements() throws InterruptedException {
+        driver.get("https://the-internet.herokuapp.com/tables");
+        WebElement exampleOneRowTwo = driver.findElement(By.cssSelector("#table1 > tbody tr:nth-child(2)"));
+        System.out.println(exampleOneRowTwo.getText());
+
+        WebElement firstRow = driver.findElement(By.cssSelector("#table1 > tbody tr:first-child"));
+        System.out.println(firstRow.getText());
+
+        WebElement lastRow = driver.findElement(By.cssSelector("#table1 > tbody tr:last-child"));
+        System.out.println(lastRow.getText());
+    }
     
-
-
-
     @Test
     public void testRelativeLocators() {
 
@@ -140,6 +210,4 @@ public class SeleniumLocatorDemoTests {
         WebElement nearMontanaJacket = driver.findElement(with(By.className("price-wrapper")).near(montanaJacket));
         assertEquals(nearMontanaJacket.getText(), "$49.00");
     }
-
-
 }
