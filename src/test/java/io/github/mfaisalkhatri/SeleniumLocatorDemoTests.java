@@ -38,7 +38,6 @@ public class SeleniumLocatorDemoTests {
         WebElement emailField = driver.findElement(By.id("username"));
         emailField.sendKeys("faisal@demo.com");
         Thread.sleep(2000);
-
     }
 
     @Test
@@ -48,6 +47,24 @@ public class SeleniumLocatorDemoTests {
         usernameField.sendKeys("faisal@demo.com");
         Thread.sleep(2000);
     }
+
+    @Test
+    public void testTagNameLocator() throws InterruptedException{
+        driver.get("https://the-internet.herokuapp.com/");
+        WebElement dragAndDropLink = driver.findElement(By.partialLinkText("Drag and Drop"));
+        dragAndDropLink.click();
+
+        WebElement pageTitle = driver.findElement(By.tagName("h3"));
+        System.out.println(pageTitle.getText());
+
+        //Finding all links on the page
+        driver.get("https://the-internet.herokuapp.com/");
+        List<WebElement> pageLinks = driver.findElements(By.tagName("a"));
+        for(int i=0; i<pageLinks.size(); i++) {
+            System.out.println(pageLinks.get(i).getText());
+        }
+    }
+
 
     @Test
     public void testLinkTextLocator() throws InterruptedException  {
@@ -60,27 +77,11 @@ public class SeleniumLocatorDemoTests {
     @Test
     public void testPartialLinkTextLocator() throws InterruptedException  {
         driver.get("https://the-internet.herokuapp.com/");
-        WebElement dragAndDropLink = driver.findElement(By.partialLinkText("Context"));
-        dragAndDropLink.click();
+        WebElement contextMenuLink = driver.findElement(By.partialLinkText("Context"));
+        contextMenuLink.click();
         Thread.sleep(2000);
     }
 
-    @Test
-    public void testTagNameLocator() throws InterruptedException{
-        driver.get("https://the-internet.herokuapp.com/");
-        WebElement dragAndDropLink = driver.findElement(By.partialLinkText("Drag and Drop"));
-        dragAndDropLink.click();
-        WebElement pageTitle = driver.findElement(By.tagName("h3"));
-        System.out.println(pageTitle.getText());
-
-        //Finding all links on the page
-        driver.get("https://the-internet.herokuapp.com/");
-        List<WebElement> pageLinks = driver.findElements(By.tagName("a"));
-        for(int i=0; i<pageLinks.size(); i++) {
-            System.out.println(pageLinks.get(i).getText());
-        }
-
-    }
 
     @Test
     public void testClassName () throws InterruptedException{
@@ -91,12 +92,13 @@ public class SeleniumLocatorDemoTests {
     }
 
     @Test
-    public void testSimplkeXpathLocators() {
+    public void testSimpleXpathLocators() throws InterruptedException {
         driver.get("https://www.lambdatest.com/selenium-playground/ajax-form-submit-demo");
-        WebElement nameField = driver.findElement(By.xpath("input[@id='title']"));
+        WebElement nameField = driver.findElement(By.xpath("//input[@id='title']"));
         nameField.sendKeys("Faisal");
         WebElement messageField = driver.findElement(By.xpath("//textarea[contains(@name, 'description')]"));
         messageField.sendKeys("This is test message");
+        Thread.sleep(2000);
     }
 
     @Test
@@ -184,6 +186,9 @@ public class SeleniumLocatorDemoTests {
 
         WebElement lastRow = driver.findElement(By.cssSelector("#table1 > tbody tr:last-child"));
         System.out.println(lastRow.getText());
+
+        WebElement firstNameRowTwo = driver.findElement(By.cssSelector("#table1 > tbody tr:nth-child(2) td:nth-child(2)"));
+        System.out.println(firstNameRowTwo.getText());
     }
     
     @Test
@@ -191,7 +196,7 @@ public class SeleniumLocatorDemoTests {
 
         driver.navigate().to("https://magento.softwaretestingboard.com/men/tops-men/jackets-men.html");
 
-        WebElement montanaJacket = driver.findElement(By.cssSelector(".products.wrapper ol li:nth-child(2) .product.details a.product-item-link"));
+          WebElement montanaJacket = driver.findElement(By.cssSelector(".products.wrapper ol li:nth-child(2) .product.details a.product-item-link"));
 
         WebElement belowMontanaJacket = driver.findElement(with(By.cssSelector(".products.wrapper ol li .product.details a.product-item-link")).below(montanaJacket));
         assertEquals(belowMontanaJacket.getText(), "Taurus Elements Shell");
@@ -203,11 +208,25 @@ public class SeleniumLocatorDemoTests {
         assertEquals(rightOfMontanaJacket.getText(), "Jupiter All-Weather Trainer");
 
         WebElement kenobiJacket = driver.findElement(By.cssSelector(".products.wrapper ol li:nth-child(9) .product.details a.product-item-link"));
+
         WebElement aboveKenobiJacket = driver.findElement(with(By.cssSelector(".products.wrapper ol li .product.details a.product-item-link")).above(kenobiJacket));
         assertEquals(aboveKenobiJacket.getText(), "Mars HeatTech™ Pullover");
 
 
         WebElement nearMontanaJacket = driver.findElement(with(By.className("price-wrapper")).near(montanaJacket));
         assertEquals(nearMontanaJacket.getText(), "$49.00");
+
+        WebElement montanaJacket = driver.findElement(By.cssSelector("ol > li:nth-child(2) strong > a"));
+
+        WebElement belowMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).below(montanaJacket));
+        assertEquals(belowMontanaJacket.getText(), "Taurus Elements Shell");
+
+        WebElement toLeftOfMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).toLeftOf(montanaJacket));
+        assertEquals(toLeftOfMontanaJacket.getText(), "Proteus Fitness Jackshirt");
+
+        WebElement toRightOfMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).toRightOf(montanaJacket));
+        assertEquals(toRightOfMontanaJacket.getText(), "Jupiter All-Weather Trainer");
+
+
     }
 }
