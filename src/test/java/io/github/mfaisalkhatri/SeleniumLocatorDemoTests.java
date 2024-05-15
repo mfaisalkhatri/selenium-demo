@@ -216,17 +216,15 @@ public class SeleniumLocatorDemoTests {
         WebElement nearMontanaJacket = driver.findElement(with(By.className("price-wrapper")).near(montanaJacket));
         assertEquals(nearMontanaJacket.getText(), "$49.00");
 
-        WebElement montanaJacket = driver.findElement(By.cssSelector("ol > li:nth-child(2) strong > a"));
+        WebElement montanaJacketNew = driver.findElement(By.cssSelector("ol > li:nth-child(2) strong > a"));
 
-        WebElement belowMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).below(montanaJacket));
-        assertEquals(belowMontanaJacket.getText(), "Taurus Elements Shell");
+        WebElement belowMontanaJacketNew = driver.findElement(with(By.cssSelector("ol > li strong > a")).below(montanaJacketNew));
+        assertEquals(belowMontanaJacketNew.getText(), "Taurus Elements Shell");
 
-        WebElement toLeftOfMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).toLeftOf(montanaJacket));
+        WebElement toLeftOfMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).toLeftOf(montanaJacketNew));
         assertEquals(toLeftOfMontanaJacket.getText(), "Proteus Fitness Jackshirt");
 
-        WebElement toRightOfMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).toRightOf(montanaJacket));
+        WebElement toRightOfMontanaJacket = driver.findElement(with(By.cssSelector("ol > li strong > a")).toRightOf(montanaJacketNew));
         assertEquals(toRightOfMontanaJacket.getText(), "Jupiter All-Weather Trainer");
-
-
     }
 }
