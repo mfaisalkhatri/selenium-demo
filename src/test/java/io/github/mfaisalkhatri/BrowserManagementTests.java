@@ -32,4 +32,5 @@ public class BrowserManagementTests {
         assertEquals (driver.getTitle(), "Selenium");
         driver.quit();
     }
+
 }
