@@ -33,6 +33,7 @@
 - [How to setup GitHub Actions for Java with Maven project?](https://mfaisalkhatri.github.io/2022/04/26/githubactions-for-java-maven-project/)
 - [How to Automate ServiceNOw with Selenium](https://medium.com/@iamfaisalkhatri/how-to-automate-servicenow-with-selenium-511e41172161)
 - [Cross browser testing in Selenium WebDriver](https://medium.com/@iamfaisalkhatri/cross-browser-testing-in-selenium-webdriver-pcloudy-blog-46e9d70fa13a)
+- [Different Types of Locators in Selenium WebDriver](https://www.lambdatest.com/blog/locators-in-selenium-webdriver-with-examples/)
 
 ## :movie_camera: Tutorial Videos
 
@@ -41,6 +42,7 @@
 [![Watch the video](https://img.youtube.com/vi/_hlXjVTa-jo/hqdefault.jpg)](https://youtu.be/_hlXjVTa-jo?si=PfOfU7ihb8eEgduh)
 [![Watch the video](https://img.youtube.com/vi/sVBgpz1z9Ts/hqdefault.jpg)]( https://youtu.be/sVBgpz1z9Ts?si=azE1_vquOwT9jFT1d)
 [![Watch the video](https://img.youtube.com/vi/JYosKUL0aZU/hqdefault.jpg)]( https://youtu.be/JYosKUL0aZU?si=qjHlpkHUxwZtITED)
+[![Watch the video](https://img.youtube.com/vi/1Bw2JHoOg5U/hqdefault.jpg)]( https://youtu.be/1Bw2JHoOg5U?si=mdbGd7XAfbJ3VNbO)
 
 ### :thought_balloon: Checkout the blogs related to Testing on
 
