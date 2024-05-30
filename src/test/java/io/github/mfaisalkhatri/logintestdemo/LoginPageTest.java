@@ -25,6 +25,7 @@ public class LoginPageTest extends BaseTest {
 
     @Test(dataProvider = "getLoginData")
     public void testLoginFeature(String email, String password, boolean isValidUser) {
+
         driver.get("https://ecommerce-playground.lambdatest.io/index.php?route=account/login");
         LoginPage loginPage = new LoginPage(driver);
         loginPage.performLogin(email, password);
