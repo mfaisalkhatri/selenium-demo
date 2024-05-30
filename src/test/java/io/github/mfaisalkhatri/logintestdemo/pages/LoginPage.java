@@ -31,4 +31,9 @@ public class LoginPage {
         passwordField().sendKeys(password);
         loginBtn().click();
     }
+
+    public String getErrorMessageText() {
+        return driver.findElement(By.cssSelector("#account-login div.alert")).getText();
+    }
+
 }
