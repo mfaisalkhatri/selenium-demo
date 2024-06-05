@@ -29,7 +29,7 @@ public class ChatApplicationTest extends BaseTest {
             chatUserOne.sendMessage(chatMessagesUserOne[i]);
             chatUserTwo.sendMessage(chatMessagesUserTwo[i]);
         }
-        
+
         assertEquals(chatUserOne.getLastChatMessage(), chatMessagesUserOne[3]);
         assertEquals(chatUserTwo.getLastChatMessage(), chatMessagesUserTwo[3]);
 
