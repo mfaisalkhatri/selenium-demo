@@ -29,4 +29,8 @@ public class ChatPage {
     public String getChatLog () {
         return driver.findElement(By.id("messages")).getText();
     }
+
+    public String getLastChatMessage() {
+        return driver.findElement(By.cssSelector("#messages > div:last-child > span.msgText")).getText();
+    }
 }
