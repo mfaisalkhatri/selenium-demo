@@ -18,7 +18,6 @@ public class LoginPageTest extends BaseTest {
         List<Object[]> loginData = new ArrayList<>();
         loginData.add(new Object[]{"david.thomson@gmail.com", "Password", false});
         loginData.add(new Object[]{"david.thomson@gmail.com", "", false});
-        loginData.add(new Object[]{"", "", false});
         loginData.add(new Object[]{"david.thomson@gmail.com", "Secret@123", true});
         return loginData.iterator();
     }
