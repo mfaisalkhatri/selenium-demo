@@ -1,12 +1,12 @@
 package io.github.mfaisalkhatri.dropdowndemo.tests;
 
 import io.github.mfaisalkhatri.dropdowndemo.pages.seleniumplayground.DropdownPage;
+import io.github.mfaisalkhatri.dropdowndemo.pages.seleniumplayground.JqueryDropdownPage;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class DropdownTest extends BaseTest{
-
 
     @Test
     public void testSelectDropdownValue() {
@@ -28,5 +28,13 @@ public class DropdownTest extends BaseTest{
         DropdownPage dropdownPage = new DropdownPage(driver);
         dropdownPage.selectByVisibleText("Thursday");
         assertEquals(dropdownPage.getSelectedValue(), "Thursday");
+    }
+
+
+    @Test
+    public void testJQueryDropdownField() {
+        JqueryDropdownPage jqueryDropdownPage = new JqueryDropdownPage(driver);
+        jqueryDropdownPage.selectCountry("India");
+        assertEquals(jqueryDropdownPage.getOption(), "India");
     }
 }

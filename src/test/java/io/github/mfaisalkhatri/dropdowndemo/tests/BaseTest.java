@@ -17,6 +17,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.get("https://www.lambdatest.com/selenium-playground/select-dropdown-demo");
+        //driver.get("https://www.lambdatest.com/selenium-playground/jquery-dropdown-search-demo");
     }
 
     @AfterTest
