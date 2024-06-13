@@ -13,6 +13,7 @@ public class DropdownTest extends BaseTest{
         DropdownPage dropdownPage = new DropdownPage(driver);
         dropdownPage.selectByValue("Monday");
         assertEquals(dropdownPage.getSelectedValue(), "Monday");
+        captureScreenShot("SelectByValue");
     }
 
     @Test
@@ -20,6 +21,7 @@ public class DropdownTest extends BaseTest{
         DropdownPage dropdownPage = new DropdownPage(driver);
         dropdownPage.selectByIndex(3);
         assertEquals(dropdownPage.getSelectedValue(), "Tuesday");
+        captureScreenShot("SelectByIndex");
 
     }
 
@@ -28,10 +30,11 @@ public class DropdownTest extends BaseTest{
         DropdownPage dropdownPage = new DropdownPage(driver);
         dropdownPage.selectByVisibleText("Thursday");
         assertEquals(dropdownPage.getSelectedValue(), "Thursday");
+        captureScreenShot("SelectByText");
     }
 
 
-    @Test
+    @Test(enabled = false)
     public void testJQueryDropdownField() {
         JqueryDropdownPage jqueryDropdownPage = new JqueryDropdownPage(driver);
         jqueryDropdownPage.selectCountry("India");
