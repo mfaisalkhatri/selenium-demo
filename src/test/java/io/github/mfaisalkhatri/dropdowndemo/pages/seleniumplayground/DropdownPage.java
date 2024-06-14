@@ -5,6 +5,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DropdownPage {
 
     private WebDriver driver;
@@ -47,24 +50,60 @@ public class DropdownPage {
         return multiSelectDropdown().isMultiple();
     }
 
-    public void selectMultipleOptionByValue(final String[] values) {
+    public void selectMultipleOptionByValue(List<String> values) {
         refreshPage();
-        for (int i = 0; i < values.length; i++) {
-            multiSelectDropdown().selectByVisibleText(values[i]);
+        for (int i = 0; i < values.size(); i++) {
+            multiSelectDropdown().selectByVisibleText(values.get(i).toString());
         }
     }
 
-    public void selectMultipleOptionByIndex(final int[] index) {
+    public void selectMultipleOptionByIndex(int[] index) {
         refreshPage();
         for (int i = 0; i < index.length; i++) {
             multiSelectDropdown().selectByIndex(index[i]);
         }
     }
 
-    public void selectMultipleOptionByVisibleText(final String[] text) {
+    public void selectMultipleOptionByVisibleText(List<String> text) {
         refreshPage();
-        for (int i = 0; i < text.length; i++) {
-            multiSelectDropdown().selectByVisibleText(text[i]);
+        for (int i = 0; i < text.size(); i++) {
+            multiSelectDropdown().selectByVisibleText(text.get(i).toString());
         }
+    }
+
+    public List<String> getAllSelectedOptions() {
+        List<WebElement> allOptions = multiSelectDropdown().getAllSelectedOptions();
+        List<String> selectedOptions = new ArrayList<>();
+        for (int i = 0; i < allOptions.size(); i++) {
+            selectedOptions.add(allOptions.get(i).getText());
+        }
+        return selectedOptions;
+    }
+
+    public void deselectAllValues() {
+        multiSelectDropdown().deselectAll();
+    }
+
+    public void deselectByIndex(int[] index) {
+        for (int i = 0; i < index.length; i++) {
+            multiSelectDropdown().deselectByIndex(index[i]);
+        }
+    }
+
+    public void deselectByValue(List<String> values) {
+        for (int i = 0; i < values.size(); i++) {
+            multiSelectDropdown().deselectByValue(values.get(i).toString());
+        }
+    }
+
+    public void deselectByVisibleText(List<String> text) {
+
+        for (int i = 0; i < text.size(); i++) {
+            multiSelectDropdown().deselectByVisibleText(text.get(i).toString());
+        }
+    }
+
+    public String getFirstSelectedOption() {
+        return multiSelectDropdown().getFirstSelectedOption().getText();
     }
 }
