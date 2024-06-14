@@ -53,7 +53,7 @@ public class DropdownPage {
     public void selectMultipleOptionByValue(List<String> values) {
         refreshPage();
         for (int i = 0; i < values.size(); i++) {
-            multiSelectDropdown().selectByVisibleText(values.get(i).toString());
+            multiSelectDropdown().selectByValue(values.get(i).toString());
         }
     }
 
@@ -106,4 +106,5 @@ public class DropdownPage {
     public String getFirstSelectedOption() {
         return multiSelectDropdown().getFirstSelectedOption().getText();
     }
+
 }
