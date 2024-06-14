@@ -19,12 +19,12 @@ public class DropdownPage {
     }
 
     public void selectByValue(String value) {
+
         singleSelectDropdown().selectByValue(value);
     }
 
     public void selectByIndex(int index) {
         singleSelectDropdown().selectByIndex(index);
-
     }
     public void selectByVisibleText(String text) {
         singleSelectDropdown().selectByVisibleText(text);
@@ -32,5 +32,39 @@ public class DropdownPage {
 
     public String getSelectedValue () {
         return singleSelectDropdown().getFirstSelectedOption().getText();
+    }
+
+    public void refreshPage() {
+        driver.navigate().refresh();
+    }
+
+    private Select multiSelectDropdown() {
+        WebElement multiSelectField = driver.findElement(By.id("multi-select"));
+        return new Select(multiSelectField);
+    }
+
+    public boolean isMultipleSelectionAllowed() {
+        return multiSelectDropdown().isMultiple();
+    }
+
+    public void selectMultipleOptionByValue(final String[] values) {
+        refreshPage();
+        for (int i = 0; i < values.length; i++) {
+            multiSelectDropdown().selectByVisibleText(values[i]);
+        }
+    }
+
+    public void selectMultipleOptionByIndex(final int[] index) {
+        refreshPage();
+        for (int i = 0; i < index.length; i++) {
+            multiSelectDropdown().selectByIndex(index[i]);
+        }
+    }
+
+    public void selectMultipleOptionByVisibleText(final String[] text) {
+        refreshPage();
+        for (int i = 0; i < text.length; i++) {
+            multiSelectDropdown().selectByVisibleText(text[i]);
+        }
     }
 }
