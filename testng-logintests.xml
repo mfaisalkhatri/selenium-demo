@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Selenium WebDriver Demo Suite">
+    <test name="Selenium Login Page Tests">
+        <classes>
+            <class name="io.github.mfaisalkhatri.logintestdemo.LoginPageTest">
+                <methods>
+                    <include name="testLoginFeature"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
