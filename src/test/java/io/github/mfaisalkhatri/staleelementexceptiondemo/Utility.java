@@ -8,11 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Helper {
+public class Utility {
 
     private final WebDriver driver;
 
-    public Helper (final WebDriver driver) {
+    public Utility (final WebDriver driver) {
         this.driver = driver;
     }
 
@@ -23,7 +23,7 @@ public class Helper {
             .sendKeys (value);
     }
 
-    public boolean retryUsingForLoop_TryCatch (final By locator, final String value) {
+    public boolean retryUsingForLoopTryCatch (final By locator, final String value) {
         boolean outcome = false;
         for (int repeat = 0; repeat <= 3; repeat++) {
             try {
@@ -38,7 +38,7 @@ public class Helper {
         return outcome;
     }
 
-    public boolean retryUsingWhileLoop_TryCatch (final By locator, final String value) {
+    public boolean retryUsingWhileLoopTryCatch (final By locator, final String value) {
         boolean outcome = false;
         int repeat = 0;
         while (repeat <= 3) {

@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class TestExampleStaleElementReferenceException {
 
     private WebDriver driver;
-    private Helper    helper;
+    private Utility   utility;
 
     @Test
     public void createStaleElementReferenceException () {
@@ -33,7 +33,7 @@ public class TestExampleStaleElementReferenceException {
     @BeforeTest
     public void setup () {
         this.driver = new ChromeDriver ();
-        this.helper = new Helper (this.driver);
+        this.utility = new Utility (this.driver);
         this.driver.manage ()
             .window ()
             .maximize ();
@@ -54,12 +54,12 @@ public class TestExampleStaleElementReferenceException {
         pageLink.click ();
         final By filterByField = By.id ("task-table-filter");
 
-        this.helper.chainMultipleExpectedConditions (filterByField, "in progress");
+        this.utility.chainMultipleExpectedConditions (filterByField, "in progress");
         this.driver.navigate ()
             .back ();
         pageLink = this.driver.findElement (By.linkText ("Table Data Search"));
         pageLink.click ();
-        this.helper.chainMultipleExpectedConditions (filterByField, "completed");
+        this.utility.chainMultipleExpectedConditions (filterByField, "completed");
     }
 
     @Test
@@ -68,25 +68,25 @@ public class TestExampleStaleElementReferenceException {
         pageLink.click ();
         final By filterByField = By.id ("task-table-filter");
 
-        this.helper.retryUsingForLoop_TryCatch (filterByField, "in progress");
+        this.utility.retryUsingForLoopTryCatch (filterByField, "in progress");
         this.driver.navigate ()
             .back ();
         pageLink = this.driver.findElement (By.linkText ("Table Data Search"));
         pageLink.click ();
-        this.helper.retryUsingForLoop_TryCatch (filterByField, "completed");
+        this.utility.retryUsingForLoopTryCatch (filterByField, "completed");
     }
 
     @Test
-    public void testRetryUsingWhileLoop_TryCatch () {
+    public void testRetryUsingWhileLoopTryCatch () {
         WebElement pageLink = this.driver.findElement (By.linkText ("Table Data Search"));
         pageLink.click ();
         final By filterByField = By.id ("task-table-filter");
 
-        this.helper.retryUsingWhileLoop_TryCatch (filterByField, "in progress");
+        this.utility.retryUsingWhileLoopTryCatch (filterByField, "in progress");
         this.driver.navigate ()
             .back ();
         pageLink = this.driver.findElement (By.linkText ("Table Data Search"));
         pageLink.click ();
-        this.helper.retryUsingWhileLoop_TryCatch (filterByField, "completed");
+        this.utility.retryUsingWhileLoopTryCatch (filterByField, "completed");
     }
 }
