@@ -1,4 +1,4 @@
-package io.github.mfaisalkhatri.paginationdemo.test;
+package io.github.mfaisalkhatri.paginationdemo.tests;
 
 import static org.testng.Assert.assertTrue;
 
