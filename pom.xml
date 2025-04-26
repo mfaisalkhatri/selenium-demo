@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -75,12 +75,12 @@
     </build>
 
     <properties>
-        <selenium-java.version>4.29.0</selenium-java.version>
+        <selenium-java.version>4.31.0</selenium-java.version>
         <testng.version>7.11.0</testng.version>
-        <commons-io.version>2.18.0</commons-io.version>
+        <commons-io.version>2.19.0</commons-io.version>
         <reportng.version>1.1.4</reportng.version>
         <maven.compiler.version>3.14.0</maven.compiler.version>
-        <surefire-version>3.5.2</surefire-version>
+        <surefire-version>3.5.3</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>testng.xml</suite-xml>
