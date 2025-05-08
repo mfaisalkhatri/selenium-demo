@@ -14,7 +14,6 @@ public class LocalGridTests extends BaseTest {
             .getText ();
 
         assertEquals (pageHeader, "Welcome to the-internet");
-        Thread.sleep (5000);
     }
 
 }
