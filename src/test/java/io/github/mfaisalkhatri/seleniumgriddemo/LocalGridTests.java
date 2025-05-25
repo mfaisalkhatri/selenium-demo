@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 public class LocalGridTests extends BaseTest {
 
     @Test
-    public void testPageHeader () throws InterruptedException {
+    public void testPageHeader () {
         getDriver ().get ("https://the-internet.herokuapp.com/");
         final String pageHeader = getDriver ().findElement (By.tagName ("h1"))
             .getText ();
