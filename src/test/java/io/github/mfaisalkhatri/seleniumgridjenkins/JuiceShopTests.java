@@ -25,6 +25,7 @@ public class JuiceShopTests extends BaseTest {
 
     @Test
     public void testRegisterUser () {
+        getDriver ().get ("http://host.docker.internal:3000/");
         final HomePage homePage = new HomePage (getDriver ());
         final LoginPage loginPage = homePage.openLoginPage ();
         final RegistrationPage registrationPage = loginPage.openRegistrationPage ();
