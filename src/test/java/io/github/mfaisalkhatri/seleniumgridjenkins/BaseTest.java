@@ -1,14 +1,14 @@
-package io.github.mfaisalkhatri.seleniumgriddemo;
+package io.github.mfaisalkhatri.seleniumgridjenkins;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
@@ -27,17 +27,15 @@ public class BaseTest {
             if (browser.equalsIgnoreCase ("chrome")) {
                 final ChromeOptions chromeOptions = new ChromeOptions ();
                 chromeOptions.setCapability ("se:name", "Test on Grid - Chrome");
-                setDriver (new RemoteWebDriver (new URL ("http://localhost:4444"), chromeOptions));
+                setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444"), chromeOptions));
 
             } else if (browser.equalsIgnoreCase ("firefox")) {
                 final FirefoxOptions firefoxOptions = new FirefoxOptions ();
                 firefoxOptions.setCapability ("se:name", "Test on Grid - Firefox");
-                setDriver (new RemoteWebDriver (new URL ("http://localhost:4444"), firefoxOptions));
+                setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444"), firefoxOptions));
 
-            } else if (browser.equalsIgnoreCase ("edge")) {
-                final EdgeOptions edgeOptions = new EdgeOptions ();
-                edgeOptions.setCapability ("se:name", "Test on Grid - Edge");
-                setDriver (new RemoteWebDriver (new URL ("http://localhost:4444"), edgeOptions));
+            } else if (browser.equalsIgnoreCase ("local")) {
+                setDriver (new ChromeDriver ());
             } else {
                 throw new Error ("Browser configuration is not defined!!");
             }
@@ -46,11 +44,14 @@ public class BaseTest {
             throw new Error ("Error setting up browsers in Grid");
         }
         getDriver ().manage ()
+            .window ()
+            .maximize ();
+        getDriver ().manage ()
             .timeouts ()
-            .implicitlyWait (Duration.ofSeconds (20));
+            .implicitlyWait (Duration.ofSeconds (30));
     }
 
-    @AfterTest (alwaysRun = true)
+    @AfterClass (alwaysRun = true)
     public void tearDown () {
         getDriver ().quit ();
     }

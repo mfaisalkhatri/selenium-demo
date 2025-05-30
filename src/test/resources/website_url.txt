@@ -1,0 +1,9 @@
+  https://resources.infosecinstitute.com/topic/owasp-top-10-tools-and-tactics/
+  https://community.synopsys.com/s/
+  https://www.perfecto.io/blog/test-voice-recognition-perfecto
+  https://www.inform-comms.com/ivr-testing-complete-checklist/
+  https://hoclaptrinhdanang.com/downloads/pdf/testing/the-cucumber-for-java-book.pdf
+  https://www.ultra-reporter.com/
+  https://fauxid.com/
+  https://quillbot.com/character-counter
+  https://oril.co/blog/leveraging-llm-models-a-comprehensive-guide-for-developers-and-qa-professionals/
