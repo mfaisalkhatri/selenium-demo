@@ -5,22 +5,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
-public class LandingPage {
+public class HomePage {
 
     private final Actions   actions;
     private final WebDriver driver;
 
-    public LandingPage (final WebDriver driver) {
+    public HomePage (final WebDriver driver) {
         this.driver = driver;
         this.actions = new Actions (driver);
     }
 
-    public void acceptCookies () {
-        meWantItButton ().click ();
-    }
-
-    public void dismissWelcomeBanner () {
-        dismissButton ().click ();
+    public boolean isLogoutButtonDisplayed () {
+        accountLink ().click ();
+        return logoutButton ().isDisplayed ();
     }
 
     public LoginPage openLoginPage () {
@@ -32,7 +29,11 @@ public class LandingPage {
             .click ()
             .build ()
             .perform ();
-        return new LoginPage ();
+        return new LoginPage (this.driver);
+    }
+
+    private void acceptCookies () {
+        meWantItButton ().click ();
     }
 
     private WebElement accountLink () {
@@ -43,11 +44,20 @@ public class LandingPage {
         return this.driver.findElement (By.cssSelector ("button[aria-label = 'Close Welcome Banner']"));
     }
 
+    private void dismissWelcomeBanner () {
+        dismissButton ().click ();
+    }
+
     private WebElement loginLink () {
         return this.driver.findElement (By.id ("navbarLoginButton"));
+    }
+
+    private WebElement logoutButton () {
+        return this.driver.findElement (By.id ("navbarLogoutButton"));
     }
 
     private WebElement meWantItButton () {
         return this.driver.findElement (By.cssSelector ("a[aria-label = 'dismiss cookie message']"));
     }
+
 }

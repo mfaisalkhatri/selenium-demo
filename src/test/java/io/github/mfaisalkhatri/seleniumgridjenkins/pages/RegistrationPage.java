@@ -1,5 +1,7 @@
 package io.github.mfaisalkhatri.seleniumgridjenkins.pages;
 
+import static org.testng.Assert.assertTrue;
+
 import io.github.mfaisalkhatri.seleniumgridjenkins.testdata.RegistrationData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,8 +15,28 @@ public class RegistrationPage {
         this.driver = driver;
     }
 
+    public String pageHeaderText () {
+        return this.driver.findElement (By.cssSelector ("mat-card h1"))
+            .getText ();
+    }
+
     public void registerNewUser (final RegistrationData registrationData) {
-        
+        emailField ().clear ();
+        emailField ().sendKeys (registrationData.getEmail ());
+        passwordField ().clear ();
+        passwordField ().sendKeys (registrationData.getPassword ());
+        repeatPasswordField ().clear ();
+        repeatPasswordField ().sendKeys (registrationData.getPassword ());
+        selectSecurityQuestion (registrationData.getSecurityQuestion ());
+        answerToSecurityQuestionField ().clear ();
+        answerToSecurityQuestionField ().sendKeys (registrationData.getSecurityAnswer ());
+        assertTrue (registerButton ().isEnabled ());
+        registerButton ().click ();
+    }
+
+    public String registrationSuccessText () {
+        return this.driver.findElement (By.cssSelector ("simple-snack-bar div"))
+            .getText ();
     }
 
     private WebElement answerToSecurityQuestionField () {
@@ -23,10 +45,6 @@ public class RegistrationPage {
 
     private WebElement emailField () {
         return this.driver.findElement (By.id ("emailControl"));
-    }
-
-    private WebElement pageHeader () {
-        return this.driver.findElement (By.cssSelector ("mat-card h1"));
     }
 
     private WebElement passwordField () {
