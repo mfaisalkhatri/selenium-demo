@@ -1,18 +1,22 @@
 package io.github.mfaisalkhatri.seleniumgridjenkins.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
 
-    private final Actions   actions;
-    private final WebDriver driver;
+    private final WebDriver     driver;
+    private final WebDriverWait wait;
 
     public HomePage (final WebDriver driver) {
         this.driver = driver;
-        this.actions = new Actions (driver);
+        this.wait = new WebDriverWait (driver, Duration.ofSeconds (30));
+
     }
 
     public boolean isLogoutButtonDisplayed () {
@@ -23,12 +27,9 @@ public class HomePage {
     public LoginPage openLoginPage () {
         dismissWelcomeBanner ();
         acceptCookies ();
-        this.actions.moveToElement (accountLink ())
-            .click ()
-            .moveToElement (loginLink ())
-            .click ()
-            .build ()
-            .perform ();
+        this.wait.until (ExpectedConditions.invisibilityOf (snackBar ()));
+        accountLink ().click ();
+        loginLink ().click ();
         return new LoginPage (this.driver);
     }
 
@@ -58,6 +59,10 @@ public class HomePage {
 
     private WebElement meWantItButton () {
         return this.driver.findElement (By.cssSelector ("a[aria-label = 'dismiss cookie message']"));
+    }
+
+    private WebElement snackBar () {
+        return this.driver.findElement (By.tagName ("simple-snack-bar"));
     }
 
 }

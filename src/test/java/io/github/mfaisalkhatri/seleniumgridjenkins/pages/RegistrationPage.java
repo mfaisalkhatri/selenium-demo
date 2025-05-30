@@ -2,17 +2,26 @@ package io.github.mfaisalkhatri.seleniumgridjenkins.pages;
 
 import static org.testng.Assert.assertTrue;
 
+import java.time.Duration;
+import java.util.List;
+
 import io.github.mfaisalkhatri.seleniumgridjenkins.testdata.RegistrationData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class RegistrationPage {
-    private final WebDriver driver;
+    private final Actions       actions;
+    private final WebDriver     driver;
+    private final WebDriverWait wait;
 
     public RegistrationPage (final WebDriver driver) {
         this.driver = driver;
+        this.actions = new Actions (driver);
+        this.wait = new WebDriverWait (driver, Duration.ofSeconds (30));
     }
 
     public String pageHeaderText () {
@@ -39,6 +48,10 @@ public class RegistrationPage {
             .getText ();
     }
 
+    public void waitForSnackBarToDisappear () {
+        this.wait.until (ExpectedConditions.invisibilityOf (snackBar ()));
+    }
+
     private WebElement answerToSecurityQuestionField () {
         return this.driver.findElement (By.id ("securityAnswerControl"));
     }
@@ -63,7 +76,26 @@ public class RegistrationPage {
         return this.driver.findElement (By.id ("mat-select-1"));
     }
 
-    private void selectSecurityQuestion (final String question) {
-        new Select (securityQuestionField ()).selectByVisibleText (question);
+    private void selectSecurityQuestion (final String questionText) {
+        securityQuestionField ().click ();
+        final List<WebElement> questions = this.driver.findElements (By.cssSelector ("mat-option span"));
+        boolean found = false;
+        for (final WebElement question : questions) {
+            if (questionText.contains (question.getText ())) {
+                this.actions.moveToElement (question)
+                    .click ()
+                    .build ()
+                    .perform ();
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            System.out.println ("Question not found in the list!");
+        }
+    }
+
+    private WebElement snackBar () {
+        return this.driver.findElement (By.tagName ("simple-snack-bar"));
     }
 }

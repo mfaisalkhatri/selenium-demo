@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -33,6 +34,8 @@ public class BaseTest {
                 firefoxOptions.setCapability ("se:name", "Test on Grid - Firefox");
                 setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444"), firefoxOptions));
 
+            } else if (browser.equalsIgnoreCase ("local")) {
+                setDriver (new ChromeDriver ());
             } else {
                 throw new Error ("Browser configuration is not defined!!");
             }
@@ -45,7 +48,7 @@ public class BaseTest {
             .maximize ();
         getDriver ().manage ()
             .timeouts ()
-            .implicitlyWait (Duration.ofSeconds (20));
+            .implicitlyWait (Duration.ofSeconds (30));
     }
 
     @AfterClass (alwaysRun = true)
