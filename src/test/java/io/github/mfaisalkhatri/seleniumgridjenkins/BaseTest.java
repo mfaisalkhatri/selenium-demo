@@ -26,7 +26,7 @@ public class BaseTest {
             if (browser.equalsIgnoreCase ("chrome")) {
                 final ChromeOptions chromeOptions = new ChromeOptions ();
                 chromeOptions.setCapability ("se:name", "Test on Grid - Chrome");
-                setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444/wd/hub"), chromeOptions));
+                setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444"), chromeOptions));
                 // setDriver (new RemoteWebDriver (new URL ("http://localhost:4444/"), chromeOptions));
 
             } else if (browser.equalsIgnoreCase ("firefox")) {
