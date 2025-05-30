@@ -53,5 +53,4 @@ public class LoginPage {
     private WebElement passwordField () {
         return this.driver.findElement (By.id ("password"));
     }
-
 }

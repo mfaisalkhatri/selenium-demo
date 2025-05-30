@@ -36,6 +36,7 @@ public class JuiceShopTests extends BaseTest {
         assertEquals (registrationPage.registrationSuccessText (),
             "Registration completed successfully. You can now log in.");
         registrationPage.waitForSnackBarToDisappear ();
+
         System.out.println ("Registered using: " + this.registrationData.getEmail ());
     }
 
@@ -47,5 +48,4 @@ public class JuiceShopTests extends BaseTest {
             this.registrationData.getPassword ());
         assertTrue (homePage.isLogoutButtonDisplayed ());
     }
-
 }

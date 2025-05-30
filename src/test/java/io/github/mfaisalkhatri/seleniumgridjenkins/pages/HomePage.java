@@ -64,5 +64,4 @@ public class HomePage {
     private WebElement snackBar () {
         return this.driver.findElement (By.tagName ("simple-snack-bar"));
     }
-
 }
