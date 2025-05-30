@@ -27,12 +27,11 @@ public class BaseTest {
                 final ChromeOptions chromeOptions = new ChromeOptions ();
                 chromeOptions.setCapability ("se:name", "Test on Grid - Chrome");
                 setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444"), chromeOptions));
-                // setDriver (new RemoteWebDriver (new URL ("http://localhost:4444/"), chromeOptions));
 
             } else if (browser.equalsIgnoreCase ("firefox")) {
                 final FirefoxOptions firefoxOptions = new FirefoxOptions ();
                 firefoxOptions.setCapability ("se:name", "Test on Grid - Firefox");
-                setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444/"), firefoxOptions));
+                setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444"), firefoxOptions));
 
             } else {
                 throw new Error ("Browser configuration is not defined!!");
@@ -58,4 +57,3 @@ public class BaseTest {
         DRIVER.set (remoteWebDriver);
     }
 }
-
