@@ -12,6 +12,17 @@
             </class>
         </classes>
     </test>
+    <test name="Selenium Grid with Jenkins tests on Firefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.seleniumgridjenkins.JuiceShopTests">
+                <methods>
+                    <include name="testRegisterUser"/>
+                    <include name="testUserLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
     <test name="Selenium tests on Local Chrome" enabled="false">
         <parameter name="browser" value="local"/>
         <classes>
