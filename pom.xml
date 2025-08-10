@@ -87,7 +87,7 @@
     <properties>
         <selenium-java.version>4.34.0</selenium-java.version>
         <testng.version>7.11.0</testng.version>
-        <commons-io.version>2.19.0</commons-io.version>
+        <commons-io.version>2.20.0</commons-io.version>
         <reportng.version>1.1.4</reportng.version>
         <lombok.version>1.18.38</lombok.version>
         <datafaker.version>2.4.4</datafaker.version>
