@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Selenium WebDriver Selenium Grid Jenkins test suite">
-    <test name="Selenium Grid with Jenkins tests on Chrome">
+    <test name="Selenium Grid with Jenkins tests on Chrome" enabled="false">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.seleniumgridjenkins.JuiceShopTests">
@@ -12,7 +12,7 @@
             </class>
         </classes>
     </test>
-    <test name="Selenium Grid with Jenkins tests on Firefox">
+    <test name="Selenium Grid with Jenkins tests on Firefox" enabled="false">
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="io.github.mfaisalkhatri.seleniumgridjenkins.JuiceShopTests">
@@ -34,4 +34,16 @@
             </class>
         </classes>
     </test>
+    <test name="Selenium tests on Local Firefox">
+        <parameter name="browser" value="localfirefox"/>
+        <classes>
+            <class name="io.github.mfaisalkhatri.seleniumgridjenkins.JuiceShopTests">
+                <methods>
+                    <include name="testRegisterUser"/>
+                    <include name="testUserLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
 </suite>

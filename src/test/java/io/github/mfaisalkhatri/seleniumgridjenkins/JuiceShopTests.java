@@ -25,11 +25,12 @@ public class JuiceShopTests extends BaseTest {
 
     @Test
     public void testRegisterUser () {
-        getDriver ().get ("http://host.docker.internal:3000/");
-        //getDriver ().get ("http://localhost:3000/");
+        // getDriver ().get ("http://host.docker.internal:3000/");/
+        getDriver ().get ("http://localhost:3000/");
         final HomePage homePage = new HomePage (getDriver ());
         final LoginPage loginPage = homePage.openLoginPage ();
         assertEquals (loginPage.pageHeaderText (), "Login");
+
         final RegistrationPage registrationPage = loginPage.openRegistrationPage ();
         assertEquals (registrationPage.pageHeaderText (), "User Registration");
         registrationPage.registerNewUser (this.registrationData);

@@ -82,10 +82,12 @@ public class RegistrationPage {
         boolean found = false;
         for (final WebElement question : questions) {
             if (questionText.contains (question.getText ())) {
-                this.actions.moveToElement (question)
-                    .click ()
-                    .build ()
-                    .perform ();
+                this.wait.until (ExpectedConditions.elementToBeClickable (question));
+                question.click ();
+                //                this.actions.moveToElement (question)
+                //                    .click ()
+                //                    .build ()
+                //                    .perform ();
                 found = true;
                 break;
             }
