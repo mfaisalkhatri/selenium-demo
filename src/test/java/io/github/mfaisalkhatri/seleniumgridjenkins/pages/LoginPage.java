@@ -22,16 +22,11 @@ public class LoginPage {
     }
 
     public RegistrationPage openRegistrationPage () {
-        //        if (overlay ().isDisplayed ()) {
-        //            this.wait.until (ExpectedConditions.invisibilityOf (overlay ()));
-        //            overlay ().click ();
-        //        }
         this.wait.until (ExpectedConditions.elementToBeClickable (notACustomerLink ()));
         this.actions.moveToElement (notACustomerLink ())
             .click ()
             .build ()
             .perform ();
-        //notACustomerLink ().click ();
         return new RegistrationPage (this.driver);
     }
 
@@ -60,12 +55,7 @@ public class LoginPage {
     private WebElement notACustomerLink () {
         return this.driver.findElement (By.cssSelector ("#login-form #newCustomerLink"));
     }
-
-    private WebElement overlay () {
-        return this.driver.findElement (
-            By.cssSelector ("div.cdk-overlay-backdrop.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing"));
-    }
-
+    
     private WebElement passwordField () {
         return this.driver.findElement (By.id ("password"));
     }
