@@ -55,7 +55,6 @@ public class LoginPage {
     private WebElement overlay () {
         return this.driver.findElement (
             By.cssSelector ("div.cdk-overlay-backdrop.cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing"));
-
     }
 
     private WebElement passwordField () {

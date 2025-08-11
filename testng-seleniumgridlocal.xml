@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Selenium WebDriver Selenium Grid Jenkins test suite">
-    <test name="Selenium Grid with Jenkins tests on Chrome">
-        <parameter name="browser" value="chrome"/>
+<suite name="Selenium WebDriver Selenium Grid Local test suite">
+    <test name="Selenium tests on Local Chrome">
+        <parameter name="browser" value="localchrome"/>
         <classes>
             <class name="io.github.mfaisalkhatri.seleniumgridjenkins.JuiceShopTests">
                 <methods>
@@ -12,8 +12,8 @@
             </class>
         </classes>
     </test>
-    <test name="Selenium Grid with Jenkins tests on Firefox">
-        <parameter name="browser" value="firefox"/>
+    <test name="Selenium tests on Local Firefox">
+        <parameter name="browser" value="localfirefox"/>
         <classes>
             <class name="io.github.mfaisalkhatri.seleniumgridjenkins.JuiceShopTests">
                 <methods>
