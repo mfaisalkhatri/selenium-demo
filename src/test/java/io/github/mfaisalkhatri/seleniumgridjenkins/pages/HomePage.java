@@ -5,15 +5,18 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
 
+    private final Actions       actions;
     private final WebDriver     driver;
     private final WebDriverWait wait;
 
     public HomePage (final WebDriver driver) {
+        this.actions = new Actions (driver);
         this.driver = driver;
         this.wait = new WebDriverWait (driver, Duration.ofSeconds (30));
     }
@@ -28,8 +31,10 @@ public class HomePage {
         acceptCookies ();
         this.wait.until (ExpectedConditions.invisibilityOf (snackBar ()));
         accountLink ().click ();
-        this.wait.until (ExpectedConditions.invisibilityOf (overlay ()));
-        loginLink ().click ();
+        this.actions.moveToElement (loginLink ())
+            .click ()
+            .build ()
+            .perform ();
         return new LoginPage (this.driver);
     }
 
