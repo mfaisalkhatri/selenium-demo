@@ -16,7 +16,6 @@ public class HomePage {
     public HomePage (final WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait (driver, Duration.ofSeconds (30));
-
     }
 
     public boolean isLogoutButtonDisplayed () {
@@ -29,6 +28,7 @@ public class HomePage {
         acceptCookies ();
         this.wait.until (ExpectedConditions.invisibilityOf (snackBar ()));
         accountLink ().click ();
+        this.wait.until (ExpectedConditions.invisibilityOf (overlay ()));
         loginLink ().click ();
         return new LoginPage (this.driver);
     }
@@ -59,6 +59,10 @@ public class HomePage {
 
     private WebElement meWantItButton () {
         return this.driver.findElement (By.cssSelector ("a[aria-label = 'dismiss cookie message']"));
+    }
+
+    private WebElement overlay () {
+        return this.driver.findElement (By.cssSelector (".cdk-overlay-container .cdk-overlay-pane"));
     }
 
     private WebElement snackBar () {

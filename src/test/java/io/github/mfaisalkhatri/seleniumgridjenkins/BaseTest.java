@@ -6,6 +6,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterClass;
@@ -34,8 +35,10 @@ public class BaseTest {
                 firefoxOptions.setCapability ("se:name", "Test on Grid - Firefox");
                 setDriver (new RemoteWebDriver (new URL ("http://selenium-hub:4444"), firefoxOptions));
 
-            } else if (browser.equalsIgnoreCase ("local")) {
+            } else if (browser.equalsIgnoreCase ("localchrome")) {
                 setDriver (new ChromeDriver ());
+            } else if (browser.equalsIgnoreCase ("localfirefox")) {
+                setDriver (new FirefoxDriver ());
             } else {
                 throw new Error ("Browser configuration is not defined!!");
             }

@@ -40,11 +40,14 @@ public class RegistrationPage {
         answerToSecurityQuestionField ().clear ();
         answerToSecurityQuestionField ().sendKeys (registrationData.getSecurityAnswer ());
         assertTrue (registerButton ().isEnabled ());
-        registerButton ().click ();
+        this.actions.moveToElement (registerButton ())
+            .click ()
+            .build ()
+            .perform ();
     }
 
     public String registrationSuccessText () {
-        return this.driver.findElement (By.cssSelector ("simple-snack-bar div"))
+        return this.wait.until (ExpectedConditions.visibilityOfElementLocated (By.cssSelector ("simple-snack-bar div")))
             .getText ();
     }
 
@@ -65,7 +68,7 @@ public class RegistrationPage {
     }
 
     private WebElement registerButton () {
-        return this.driver.findElement (By.id ("registerButton"));
+        return this.driver.findElement (By.cssSelector ("#registration-form button#registerButton"));
     }
 
     private WebElement repeatPasswordField () {
@@ -82,10 +85,8 @@ public class RegistrationPage {
         boolean found = false;
         for (final WebElement question : questions) {
             if (questionText.contains (question.getText ())) {
-                this.actions.moveToElement (question)
-                    .click ()
-                    .build ()
-                    .perform ();
+                this.wait.until (ExpectedConditions.elementToBeClickable (question))
+                    .click ();
                 found = true;
                 break;
             }
