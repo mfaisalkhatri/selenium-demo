@@ -25,10 +25,10 @@ public class JuiceShopTests extends BaseTest {
         this.driver.get ("http://localhost:3000");
         final HomePage homePage = new HomePage (this.driver);
         final LoginPage loginPage = homePage.openLoginPage ();
-        assertEquals (loginPage.pageHeaderText (), "Login");
+        assertEquals (loginPage.pageHeaderText (loginPage.pageHeader), "Login");
 
         final RegistrationPage registrationPage = loginPage.openRegistrationPage ();
-        assertEquals (registrationPage.pageHeaderText (), "User Registration");
+        assertEquals (registrationPage.pageHeaderText (registrationPage.pageHeader), "User Registration");
 
         registrationPage.registerNewUser (this.registrationData);
         assertEquals (registrationPage.registrationSuccessText (),
@@ -38,10 +38,12 @@ public class JuiceShopTests extends BaseTest {
     @Test
     public void testUserLogin () {
         final LoginPage loginPage = new LoginPage (this.driver);
-        assertEquals (loginPage.pageHeaderText (), "Login");
+        loginPage.waitForSnackBarToDisappear ();
+        assertEquals (loginPage.pageHeaderText (loginPage.pageHeader), "Login");
 
         final HomePage homePage = loginPage.userLogin (this.registrationData.getEmail (),
             this.registrationData.getPassword ());
+
         assertTrue (homePage.isLogoutButtonDisplayed ());
     }
 }

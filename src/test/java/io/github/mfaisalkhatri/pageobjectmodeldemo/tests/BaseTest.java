@@ -1,7 +1,5 @@
 package io.github.mfaisalkhatri.pageobjectmodeldemo.tests;
 
-import java.time.Duration;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -11,18 +9,15 @@ public class BaseTest {
 
     protected WebDriver driver;
 
-    @BeforeClass
+    @BeforeClass (alwaysRun = true)
     public void setup () {
         this.driver = new ChromeDriver ();
         this.driver.manage ()
             .window ()
             .maximize ();
-        this.driver.manage ()
-            .timeouts ()
-            .implicitlyWait (Duration.ofSeconds (30));
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void tearDown () {
         this.driver.quit ();
     }
