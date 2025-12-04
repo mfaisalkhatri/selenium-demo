@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Page Object Model demo with Juice shop website">
+    <test name="Registration and Login tests">
+        <classes>
+            <class name="io.github.mfaisalkhatri.pageobjectmodeldemo.tests.JuiceShopTests">
+                <methods>
+                    <include name="testRegisterUser"/>
+                    <include name="testUserLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
