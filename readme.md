@@ -2,7 +2,8 @@
 
 ## :question: What is this Repository about?
 
-- This repo contains example code demonstrated in the Selenium WebDriver Java Tutorials on my YouTube Channel [Testing Talks with Faisal Khatri](https://www.youtube.com/@faisalkhatriqa)
+- This repo contains example code demonstrated in the Selenium WebDriver Java Tutorials on my YouTube
+  Channel [Testing Talks with Faisal Khatri](https://www.youtube.com/@faisalkhatriqa)
 - Maven is used as build tool in thies project.
 - TestNG is used as testing framework for organizing and running tests and performing Assertions.
 
@@ -29,6 +30,7 @@
 - [Different Types of Locators in Selenium WebDriver](https://www.lambdatest.com/blog/locators-in-selenium-webdriver-with-examples/)
 - [Understanding CSS Selectors in Selenium](https://medium.com/@iamfaisalkhatri/understanding-css-selectors-in-selenium-pcloudy-blog-3e4b09672264)
 - [How To Automate Login Page Using Selenium WebDriver](https://www.lambdatest.com/blog/automate-login-page-using-selenium-webdriver/)
+- [What Is Page Object Model (POM) Design Pattern](https://medium.com/@iamfaisalkhatri/what-is-page-object-model-pom-design-pattern-9d0f3e831bdc)
 - [End to End testing using Selenium WebDriver and Java](https://medium.com/@iamfaisalkhatri/end-to-end-testing-using-selenium-webdriver-and-java-4ff8667716ca)
 - [Cross browser testing in Selenium WebDriver](https://medium.com/@iamfaisalkhatri/cross-browser-testing-in-selenium-webdriver-pcloudy-blog-46e9d70fa13a)
 - [Writing Selenium Web Automation tests in Fluent way!](https://medium.com/@iamfaisalkhatri/writing-selenium-web-automation-tests-in-fluent-way-864db95ee67a)
@@ -45,7 +47,7 @@
 [![Watch the video](https://img.youtube.com/vi/_hlXjVTa-jo/hqdefault.jpg)](https://youtu.be/_hlXjVTa-jo?si=PfOfU7ihb8eEgduh)
 [![Watch the video](https://img.youtube.com/vi/wSxnk3XkG58/hqdefault.jpg)](https://youtu.be/wSxnk3XkG58)
 [![Watch the video](https://img.youtube.com/vi/sVBgpz1z9Ts/hqdefault.jpg)]( https://youtu.be/sVBgpz1z9Ts?si=azE1_vquOwT9jFT1d)
-
+[![Watch the video](https://img.youtube.com/vi/C4UhtgDukrI/hqdefault.jpg)]( https://youtu.be/C4UhtgDukrI)
 
 ### :thought_balloon: Checkout the blogs related to Testing on
 
