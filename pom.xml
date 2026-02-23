@@ -92,7 +92,7 @@
         <lombok.version>1.18.42</lombok.version>
         <datafaker.version>2.5.4</datafaker.version>
         <maven.compiler.version>3.15.0</maven.compiler.version>
-        <surefire-version>3.5.4</surefire-version>
+        <surefire-version>3.5.5</surefire-version>
         <java.release.version>17</java.release.version>
         <maven.source.encoding>UTF-8</maven.source.encoding>
         <suite-xml>testng.xml</suite-xml>
