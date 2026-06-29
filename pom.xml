@@ -90,7 +90,7 @@
         <commons-io.version>2.22.0</commons-io.version>
         <reportng.version>1.1.4</reportng.version>
         <lombok.version>1.18.46</lombok.version>
-        <datafaker.version>2.6.0</datafaker.version>
+        <datafaker.version>2.7.0</datafaker.version>
         <maven.compiler.version>3.15.0</maven.compiler.version>
         <surefire-version>3.5.6</surefire-version>
         <java.release.version>17</java.release.version>
